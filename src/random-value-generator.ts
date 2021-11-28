@@ -1,4 +1,3 @@
-
 /**
  * @param values
  * @returns Random value from @values using Math.random
