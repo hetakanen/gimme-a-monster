@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import sinon from "sinon";
-import { generate } from "./monster-generator";
-import * as generator from "./random-value-generator";
+import { generate } from "./monsterGenerator";
+import * as generator from "./randomValueGenerator";
 
 beforeEach(() => {
   let index = 0;

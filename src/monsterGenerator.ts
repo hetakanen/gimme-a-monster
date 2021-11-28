@@ -3,7 +3,7 @@ import * as shapes from "./data/shape-options.json";
 import * as mouths from "./data/mouth-options.json";
 import * as eyes from "./data/eye-options.json";
 import * as monsters from "./data/monster-options.json";
-import { getRandomValue, getRandomNumber } from "./random-value-generator";
+import { getRandomValue, getRandomNumber } from "./randomValueGenerator";
 import { Complexity, IHighMonster, IMediumMonster, IMonster } from "./types";
 
 export const generate = (complexity: Complexity = "low") => {

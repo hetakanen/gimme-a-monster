@@ -1,5 +1,5 @@
 import { IOptions } from "./types";
-import { generate } from "./monster-generator";
+import { generate } from "./monsterGenerator";
 
 export default (options: IOptions) => {
   return generate(options.complexity);
