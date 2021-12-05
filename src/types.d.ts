@@ -12,9 +12,7 @@ export interface IMonster {
   stringify: string;
 }
 
-export interface ILowMonster extends IMonster {}
-
-export interface IMediumMonster extends ILowMonster {
+export interface IMediumMonster extends IMonster {
   mouth: string;
   shape: string;
 }

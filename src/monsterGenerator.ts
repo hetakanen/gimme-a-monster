@@ -7,7 +7,7 @@ import { getRandomValue, getRandomNumber } from "./randomValueGenerator";
 import { Complexity, IHighMonster, IMediumMonster, IMonster } from "./types";
 
 export const generate = (complexity: Complexity = "low") => {
-  let result: IMonster = {
+  const result: IMonster = {
     color: "",
     type: "",
     stringify: "",
