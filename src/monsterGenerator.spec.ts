@@ -5,14 +5,12 @@ import * as generator from "./randomValueGenerator";
 
 describe("monster generator", () => {
   beforeEach(() => {
-    let index = 0;
+    let index = 1;
     sinon.stub(generator, "getRandomValue").callsFake(() => {
-      index++;
-      return "Test" + index;
+      return "Test" + index++;
     });
     sinon.stub(generator, "getRandomNumber").callsFake(() => {
-      index++;
-      return index;
+      return index++;
     });
   });
 
