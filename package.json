@@ -25,7 +25,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "scripts": {
-    "build": "gulp",
+    "build": "gulp && npm run lint",
     "prettier": "prettier --write ./src/**/*.ts",
     "lint": "eslint ./src/**/*.ts",
     "test": "mocha"
