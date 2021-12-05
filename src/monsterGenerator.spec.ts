@@ -3,24 +3,22 @@ import sinon from "sinon";
 import { generate } from "./monsterGenerator";
 import * as generator from "./randomValueGenerator";
 
-beforeEach(() => {
-  let index = 0;
-  sinon.stub(generator, "getRandomValue").callsFake(() => {
-    index++;
-    return "Test" + index;
+describe("monster generator", () => {
+  beforeEach(() => {
+    let index = 1;
+    sinon.stub(generator, "getRandomValue").callsFake(() => {
+      return "Test" + index++;
+    });
+    sinon.stub(generator, "getRandomNumber").callsFake(() => {
+      return index++;
+    });
   });
-  sinon.stub(generator, "getRandomNumber").callsFake(() => {
-    index++;
-    return index;
+
+  afterEach(() => {
+    sinon.restore();
   });
-});
 
-afterEach(() => {
-  sinon.restore();
-});
-
-describe("generate monster", () => {
-  it("high", () => {
+  it("should create high complexity monster with max amount of fields", () => {
     const result = generate("high");
     const expected = {
       color: "Test5",
@@ -33,7 +31,7 @@ describe("generate monster", () => {
     };
     expect(result).to.eql(expected);
   });
-  it("medium", () => {
+  it("should create medium complexity monster with max amount of fields", () => {
     const result = generate("medium");
     const expected = {
       color: "Test3",
@@ -44,7 +42,7 @@ describe("generate monster", () => {
     };
     expect(result).to.eql(expected);
   });
-  it("low", () => {
+  it("should create low complexity monster with max amount of fields", () => {
     const result = generate("low");
     const expected = {
       color: "Test1",
