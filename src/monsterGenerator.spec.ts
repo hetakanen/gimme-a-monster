@@ -6,8 +6,7 @@ import * as generator from "./randomValueGenerator";
 describe("monster generator", () => {
   beforeEach(() => {
     let index = 0;
-
-    sinon.stub(generator, "getRandomValue").callsFake(()=> {
+    sinon.stub(generator, "getRandomValue").callsFake(() => {
       index++;
       return "Test" + index;
     });
