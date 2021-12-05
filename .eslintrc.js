@@ -5,7 +5,6 @@ module.exports = {
     },
     extends: [
       "eslint:recommended",
-      "plugin:react/recommended",
       "plugin:@typescript-eslint/recommended",
     ],
     parser: "@typescript-eslint/parser",
@@ -16,7 +15,7 @@ module.exports = {
       ecmaVersion: 13,
       sourceType: "module",
     },
-    plugins: ["react", "@typescript-eslint"],
+    plugins: ["@typescript-eslint"],
     rules: {
       '@typescript-eslint/ban-ts-comment': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
