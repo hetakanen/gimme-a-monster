@@ -18,7 +18,7 @@ describe("monster generator", () => {
     sinon.restore();
   });
 
-  it("should create monster with high random values", () => {
+  it("should create high complexity monster with max amount of fields", () => {
     const result = generate("high");
     const expected = {
       color: "Test5",
@@ -31,7 +31,7 @@ describe("monster generator", () => {
     };
     expect(result).to.eql(expected);
   });
-  it("should create monster with medium random values", () => {
+  it("should create medium complexity monster with max amount of fields", () => {
     const result = generate("medium");
     const expected = {
       color: "Test3",
@@ -42,7 +42,7 @@ describe("monster generator", () => {
     };
     expect(result).to.eql(expected);
   });
-  it("should create monster with low random values", () => {
+  it("should create low complexity monster with max amount of fields", () => {
     const result = generate("low");
     const expected = {
       color: "Test1",
