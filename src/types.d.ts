@@ -19,27 +19,3 @@ export interface IMonster {
   stringified: string;
   properties: IMonsterProps;
 }
-
-export interface ILowMonster extends IMonster {
-  properties: {
-    color: string;
-    type: string;
-  };
-}
-
-export interface IMediumMonster extends IMonster {
-  properties: {
-    [...ILowMonster];
-    mouth: string;
-    shape: string;
-  };
-}
-
-export interface IHighMonster extends IMonster {
-  properties: {
-    [...ILowMonster];
-    [...IMediumMonster];
-    eyeAmount: number;
-    eyes: string;
-  };
-}
