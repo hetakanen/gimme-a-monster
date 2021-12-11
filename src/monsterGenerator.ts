@@ -4,51 +4,41 @@ import * as mouths from "./data/mouth-options.json";
 import * as eyes from "./data/eye-options.json";
 import * as monsters from "./data/monster-options.json";
 import { getRandomValue, getRandomNumber } from "./randomValueGenerator";
-import { Complexity, IHighMonster, IMediumMonster, IMonster } from "./types";
+import { Complexity, IMonster, IMonsterProps } from "./types";
 
 export const generate = (complexity: Complexity = "low") => {
   const result: IMonster = {
-    color: "",
-    type: "",
-    stringify: "",
+    stringified: "",
+    properties: {},
   };
 
   if (complexity === "high") {
-    addEyes(result as IHighMonster);
+    result.properties.eyeAmount = getRandomNumber(10);
+    result.properties.eyes = getRandomValue(eyes);
   }
 
   if (complexity === "high" || complexity === "medium") {
-    addMouth(result as IMediumMonster);
-    addShape(result as IMediumMonster);
+    result.properties.mouth = getRandomValue(mouths);
+    result.properties.shape = getRandomValue(shapes);
   }
 
-  addColor(result);
-  addType(result);
+  result.properties.color = getRandomValue(colors);
+  result.properties.type = getRandomValue(monsters);
+  result.stringified = toString(result.properties);
   return result;
 };
 
-const addEyes = (result: IHighMonster) => {
-  result.eyeAmount = getRandomNumber(10);
-  result.eyes = getRandomValue(eyes) as string;
-  result.stringify += result.eyeAmount + " " + result.eyes + " ";
-};
+/**
+ * Loop through monster properties and add values to string with spaces
+ * Trim the space at the end
+ * @param props
+ * @returns string of properties with spaces between values
+ */
+const toString = (props: IMonsterProps) => {
+  let str = "";
+  for (const prop in props) {
+    str += `${props[prop as keyof IMonsterProps]} `;
+  }
 
-const addMouth = (result: IMediumMonster) => {
-  result.mouth = getRandomValue(mouths);
-  result.stringify += result.mouth + " ";
-};
-
-const addShape = (result: IMediumMonster) => {
-  result.shape = getRandomValue(shapes);
-  result.stringify += result.shape + " ";
-};
-
-const addColor = (result: IMonster) => {
-  result.color = getRandomValue(colors);
-  result.stringify += result.color + " ";
-};
-
-const addType = (result: IMonster) => {
-  result.type = getRandomValue(monsters);
-  result.stringify += result.type;
+  return str.trim();
 };

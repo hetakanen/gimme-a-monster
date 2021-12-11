@@ -6,18 +6,40 @@ export interface IOptions {
   casing?: Casing;
 }
 
+interface IMonsterProps {
+  color?: string;
+  type?: string;
+  mouth?: string;
+  shape?: string;
+  eyeAmount?: number;
+  eyes?: string;
+}
+
 export interface IMonster {
-  color: string;
-  type: string;
-  stringify: string;
+  stringified: string;
+  properties: IMonsterProps;
+}
+
+export interface ILowMonster extends IMonster {
+  properties: {
+    color: string;
+    type: string;
+  };
 }
 
 export interface IMediumMonster extends IMonster {
-  mouth: string;
-  shape: string;
+  properties: {
+    [...ILowMonster];
+    mouth: string;
+    shape: string;
+  };
 }
 
-export interface IHighMonster extends IMediumMonster {
-  eyeAmount: number;
-  eyes: string;
+export interface IHighMonster extends IMonster {
+  properties: {
+    [...ILowMonster];
+    [...IMediumMonster];
+    eyeAmount: number;
+    eyes: string;
+  };
 }
