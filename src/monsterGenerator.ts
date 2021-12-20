@@ -4,10 +4,12 @@ import * as mouths from "./data/mouth-options.json";
 import * as eyes from "./data/eye-options.json";
 import * as monsters from "./data/monster-options.json";
 import { getRandomValue, getRandomNumber } from "./randomValueGenerator";
-import { Casing, Complexity, IMonster, IMonsterProps } from "./types";
+import { IMonster, IMonsterProps, IOptions } from "./types";
 import { format } from "./stringFormatter";
 
-export const generate = (complexity: Complexity = "low", casing?: Casing) => {
+export const generate = (options: IOptions) => {
+  const { complexity, casing } = options;
+
   const result: IMonster = {
     stringified: "",
     properties: {},
@@ -25,7 +27,7 @@ export const generate = (complexity: Complexity = "low", casing?: Casing) => {
 
   result.properties.color = getRandomValue(colors);
   result.properties.type = getRandomValue(monsters);
-  
+
   const str = toString(result.properties);
   result.stringified = format(str, casing);
   return result;
@@ -37,7 +39,7 @@ export const generate = (complexity: Complexity = "low", casing?: Casing) => {
  * @param props
  * @returns string of properties with spaces between values
  */
- export const toString = (props: IMonsterProps) => {
+export const toString = (props: IMonsterProps) => {
   let str = "";
   for (const prop in props) {
     str += `${props[prop as keyof IMonsterProps]} `;
