@@ -40,10 +40,10 @@ export const generate = (options: IOptions) => {
  * @returns string of properties with spaces between values
  */
 const toString = (props: IMonsterProps) => {
-  let str = "";
+  const arr = [];
   for (const prop in props) {
-    str += `${props[prop as keyof IMonsterProps]} `;
+    arr.push(props[prop as keyof IMonsterProps]);
   }
 
-  return str.trim();
+  return arr.join(" ");
 };
