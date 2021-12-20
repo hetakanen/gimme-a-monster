@@ -39,7 +39,7 @@ export const generate = (options: IOptions) => {
  * @param props
  * @returns string of properties with spaces between values
  */
-export const toString = (props: IMonsterProps) => {
+const toString = (props: IMonsterProps) => {
   let str = "";
   for (const prop in props) {
     str += `${props[prop as keyof IMonsterProps]} `;
