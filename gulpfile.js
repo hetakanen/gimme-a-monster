@@ -1,12 +1,14 @@
-var gulp = require("gulp");
-var browserify = require("browserify");
-var source = require("vinyl-source-stream");
-var tsify = require("tsify");
-var uglify = require("gulp-uglify");
-var sourcemaps = require("gulp-sourcemaps");
-var buffer = require("vinyl-buffer");
+const gulp = require("gulp");
+const browserify = require("browserify");
+const source = require("vinyl-source-stream");
+const tsify = require("tsify");
+const uglify = require("gulp-uglify");
+const sourcemaps = require("gulp-sourcemaps");
+const buffer = require("vinyl-buffer");
+const ts = require('gulp-typescript');
+const tsProject = ts.createProject('tsconfig.json');
 
-gulp.task("default", function () {
+gulp.task("build:src", function () {
     return browserify({
         basedir: ".",
         debug: true,
@@ -24,3 +26,13 @@ gulp.task("default", function () {
     .pipe(sourcemaps.write("./")) // Uglify | end
     .pipe(gulp.dest("dist")); // Set destination to dist
 });
+
+gulp.task('build:cli', () => {
+    return gulp.src('./src/cli.ts')
+        .pipe(tsProject()) // Generate .js file
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('build', gulp.parallel(['build:src', 'build:cli']));
+gulp.task('default', gulp.series('build'));
+
