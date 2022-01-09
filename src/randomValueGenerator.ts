@@ -3,7 +3,7 @@
  * @returns Random value from @values using Math.random
  */
 export const getRandomValue = (values: Array<string>) => {
-  return values[~~(Math.random() * values.length)];
+  return values[Math.floor(Math.random() * values.length)];
 };
 
 /**
@@ -11,5 +11,5 @@ export const getRandomValue = (values: Array<string>) => {
  * @returns Get value between @max and 0
  */
 export const getRandomNumber = (max: number) => {
-  return ~~(Math.random() * max);
+  return Math.floor(Math.random() * max);
 };
