@@ -16,7 +16,7 @@ export const generate = (options: IOptions) => {
   };
 
   if (complexity === "high") {
-    result.properties.eyeAmount = getRandomNumber(10);
+    result.properties.eyeAmount = getRandomNumber(10, 1);
     result.properties.eyes = getRandomValue(eyes);
   }
 
