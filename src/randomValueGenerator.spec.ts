@@ -15,10 +15,17 @@ describe("random value generator", () => {
       expect(result).to.eql("red");
     });
 
-    it("should return max value when random returns 1", () => {
-      sinon.stub(Math, "random").returns(1);
+    it("should return max value when random returns 0.99", () => {
+      sinon.stub(Math, "random").returns(0.99);
       const result = getRandomValue(values);
       expect(result).to.eql("purple");
+    });
+
+    // Math random never returns 1
+    it("should return undefined when random returns 1", () => {
+      sinon.stub(Math, "random").returns(1);
+      const result = getRandomValue(values);
+      expect(result).to.eql(undefined);
     });
 
     it("should return green when random returns 0.5", () => {

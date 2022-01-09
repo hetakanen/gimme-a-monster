@@ -3,7 +3,7 @@
  * @returns Random value from @values using Math.random
  */
 export const getRandomValue = (values: Array<string>) => {
-  return values[Math.floor(Math.random() * (values.length - 1))];
+  return values[Math.floor(Math.random() * values.length)];
 };
 
 /**
