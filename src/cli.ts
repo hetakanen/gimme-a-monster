@@ -18,10 +18,14 @@ program
   .parse();
 
 const options = program.opts();
-if (options.complexity) console.log(`Option <complexity>: ${options.complexity}`);
+if (options.complexity)
+  console.log(`Option <complexity>: ${options.complexity}`);
 if (options.casing) console.log(`Option <casing>: ${options.casing}`);
 
-console.log("Result:", generateMonster({
-  complexity: options.complexity,
-  casing: options.casing,
-}));
+console.log(
+  "Result:",
+  generateMonster({
+    complexity: options.complexity,
+    casing: options.casing,
+  })
+);
