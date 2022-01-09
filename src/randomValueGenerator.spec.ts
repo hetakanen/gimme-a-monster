@@ -41,22 +41,40 @@ describe("random value generator", () => {
       sinon.restore();
     });
 
-    it("should return 0 when random returns 0", () => {
-      sinon.stub(Math, "random").returns(0);
-      const result = getRandomNumber(max);
-      expect(result).to.eql(0);
+    describe("without min", () => {
+      it("should return 0 when random returns 0", () => {
+        sinon.stub(Math, "random").returns(0);
+        const result = getRandomNumber(max);
+        expect(result).to.eql(0);
+      });
+
+      it("should return max value when random returns 0.99", () => {
+        sinon.stub(Math, "random").returns(0.99);
+        const result = getRandomNumber(max);
+        expect(result).to.eql(5);
+      });
+
+      // Math random never returns 1
+      it("should return one over max value when random returns 1", () => {
+        sinon.stub(Math, "random").returns(1);
+        const result = getRandomNumber(max);
+        expect(result).to.eql(6);
+      });
+
+      it("should return 3 when random returns 0.5", () => {
+        sinon.stub(Math, "random").returns(0.5);
+        const result = getRandomNumber(max);
+        expect(result).to.eql(3);
+      });
     });
 
-    it("should return max value when random returns 1", () => {
-      sinon.stub(Math, "random").returns(1);
-      const result = getRandomNumber(max);
-      expect(result).to.eql(5);
-    });
-
-    it("should return 2 when random returns 0.5", () => {
-      sinon.stub(Math, "random").returns(0.5);
-      const result = getRandomNumber(max);
-      expect(result).to.eql(2);
+    describe("with min", () => {
+      const min = 1;
+      it("should return 1 when random returns 0", () => {
+        sinon.stub(Math, "random").returns(0);
+        const result = getRandomNumber(max, min);
+        expect(result).to.eql(1);
+      });
     });
   });
 });

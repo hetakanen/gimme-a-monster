@@ -8,8 +8,9 @@ export const getRandomValue = (values: Array<string>) => {
 
 /**
  * @param max
- * @returns Get value between @max and 0
+ * @param min
+ * @returns Get value between @max and @min
  */
-export const getRandomNumber = (max: number) => {
-  return Math.floor(Math.random() * max);
+ export const getRandomNumber = (max: number, min: number = 0) => {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 };
