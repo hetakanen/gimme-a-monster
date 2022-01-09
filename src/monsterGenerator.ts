@@ -1,8 +1,8 @@
-import * as colors from "./data/color-options.json";
-import * as shapes from "./data/shape-options.json";
-import * as mouths from "./data/mouth-options.json";
-import * as eyes from "./data/eye-options.json";
-import * as monsters from "./data/monster-options.json";
+import colors from "./data/color-options.json";
+import shapes from "./data/shape-options.json";
+import mouths from "./data/mouth-options.json";
+import eyes from "./data/eye-options.json";
+import monsters from "./data/monster-options.json";
 import { getRandomValue, getRandomNumber } from "./randomValueGenerator";
 import { IMonster, IMonsterProps, IOptions } from "./types";
 import { format } from "./stringFormatter";
