@@ -2,17 +2,19 @@ export type Complexity = "low" | "medium" | "high";
 export type Casing = "capitalize" | "upper" | "lower";
 
 export interface IOptions {
-  complexity?: Complexity;
   casing?: Casing;
+  complexity?: Complexity;
 }
 
 interface IMonsterProps {
   color?: string;
-  type?: string;
-  mouth?: string;
-  shape?: string;
   eyeAmount?: number;
   eyes?: string;
+  pattern?: string;
+  mood?: string;
+  size?: string;
+  shape?: string;
+  type?: string;
 }
 
 export interface IMonster {
