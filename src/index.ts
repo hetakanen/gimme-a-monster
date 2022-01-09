@@ -1,6 +1,8 @@
 import { IOptions } from "./types";
 import { generate } from "./monsterGenerator";
 
-export default (options: IOptions) => {
+const generateMonster = (options: IOptions) => {
   return generate(options);
 };
+
+export default generateMonster;
