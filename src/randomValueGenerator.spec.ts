@@ -9,7 +9,7 @@ describe("random value generator", () => {
       sinon.restore();
     });
 
-    it("should return red when random returns 0.01", () => {
+    it("should return red when random returns 0", () => {
       sinon.stub(Math, "random").returns(0);
       const result = getRandomValue(values);
       expect(result).to.eql("red");
@@ -21,7 +21,7 @@ describe("random value generator", () => {
       expect(result).to.eql("purple");
     });
 
-    // Math random never returns 0 nor 1
+    // Math random never returns 1
     it("should return undefined when random returns 1", () => {
       sinon.stub(Math, "random").returns(1);
       const result = getRandomValue(values);
