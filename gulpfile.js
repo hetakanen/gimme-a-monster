@@ -5,8 +5,6 @@ const tsify = require("tsify");
 const uglify = require("gulp-uglify");
 const sourcemaps = require("gulp-sourcemaps");
 const buffer = require("vinyl-buffer");
-const ts = require('gulp-typescript');
-const tsProject = ts.createProject('tsconfig.json');
 
 gulp.task("build:src", function () {
     return browserify({
@@ -28,9 +26,9 @@ gulp.task("build:src", function () {
 });
 
 gulp.task('build:cli', () => {
-    return gulp.src('./src/cli.ts')
-        .pipe(tsProject()) // Generate .js file
-        .pipe(gulp.dest('dist'));
+    return gulp.src('./src/cli.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('bin'));
 });
 
 gulp.task('build', gulp.parallel(['build:src', 'build:cli']));

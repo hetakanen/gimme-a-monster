@@ -2,8 +2,8 @@
 
 // Example run: node cli.js -cs lower -cpx high
 
-import { program } from "commander";
-import generateMonster from "./index";
+const { program } = require('commander');
+const generateMonster = require('../dist/index.js').default;
 
 program
   .option(
@@ -18,8 +18,7 @@ program
   .parse();
 
 const options = program.opts();
-if (options.complexity)
-  console.log(`Option <complexity>: ${options.complexity}`);
+if (options.complexity) console.log(`Option <complexity>: ${options.complexity}`);
 if (options.casing) console.log(`Option <casing>: ${options.casing}`);
 
 console.log(
