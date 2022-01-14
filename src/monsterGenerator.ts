@@ -4,8 +4,7 @@ import shapes from "./data/shape-options.json";
 import mood from "./data/mood-options.json";
 import eyes from "./data/eye-options.json";
 import monsters from "./data/monster-options.json";
-import patterns from "./data/pattern-options.json";
-import { getRandomValue, getRandomNumber } from "./randomValueGenerator";
+import { getRandomValue } from "./randomValueGenerator";
 import { IMonster, IMonsterProps, IOptions } from "./types";
 import { format } from "./stringFormatter";
 
@@ -18,18 +17,16 @@ export const generate = (options: IOptions) => {
   };
 
   if (complexity === "high") {
-    result.properties.eyeAmount = getRandomNumber(10, 1);
     result.properties.eyes = getRandomValue(eyes);
+    result.properties.size = getRandomValue(sizes);
   }
 
   if (complexity === "high" || complexity === "medium") {
-    result.properties.size = getRandomValue(sizes);
     result.properties.mood = getRandomValue(mood);
     result.properties.shape = getRandomValue(shapes);
   }
 
   result.properties.color = getRandomValue(colors);
-  result.properties.pattern = getRandomValue(patterns);
   result.properties.type = getRandomValue(monsters);
 
   const str = toString(result.properties);

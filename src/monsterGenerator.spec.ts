@@ -18,9 +18,6 @@ describe("monster generator", () => {
     sinon.stub(generator, "getRandomValue").callsFake(() => {
       return "Test" + index++;
     });
-    sinon.stub(generator, "getRandomNumber").callsFake(() => {
-      return index++;
-    });
   });
 
   afterEach(() => {
@@ -30,16 +27,14 @@ describe("monster generator", () => {
   it("should create high complexity monster with max amount of fields", () => {
     const result = generate({ complexity: "high" });
     const expected = {
-      stringified: "1 Test2 Test3 Test4 Test5 Test6 Test7 Test8",
+      stringified: "Test1 Test2 Test3 Test4 Test5 Test6",
       properties: {
-        color: "Test6",
-        eyeAmount: 1,
-        eyes: "Test2",
-        mood: "Test4",
-        pattern: "Test7",
-        shape: "Test5",
-        size: "Test3",
-        type: "Test8",
+        color: "Test5",
+        eyes: "Test1",
+        mood: "Test3",
+        shape: "Test4",
+        size: "Test2",
+        type: "Test6",
       },
     };
     expect(result).to.eql(expected);
@@ -48,14 +43,12 @@ describe("monster generator", () => {
   it("should create medium complexity monster with max amount of fields", () => {
     const result = generate({ complexity: "medium" });
     const expected = {
-      stringified: "Test1 Test2 Test3 Test4 Test5 Test6",
+      stringified: "Test1 Test2 Test3 Test4",
       properties: {
-        color: "Test4",
-        mood: "Test2",
-        pattern: "Test5",
-        shape: "Test3",
-        size: "Test1",
-        type: "Test6",
+        color: "Test3",
+        mood: "Test1",
+        shape: "Test2",
+        type: "Test4",
       },
     };
     expect(result).to.eql(expected);
@@ -64,11 +57,10 @@ describe("monster generator", () => {
   it("should create low complexity monster with max amount of fields", () => {
     const result = generate({ complexity: "low" });
     const expected = {
-      stringified: "Test1 Test2 Test3",
+      stringified: "Test1 Test2",
       properties: {
         color: "Test1",
-        pattern: "Test2",
-        type: "Test3",
+        type: "Test2",
       },
     };
     expect(result).to.eql(expected);
