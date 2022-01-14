@@ -30,10 +30,10 @@ describe("monster generator", () => {
       stringified: "Test1 Test2 Test3 Test4 Test5 Test6",
       properties: {
         color: "Test5",
-        eyes: "Test1",
-        mood: "Test3",
+        eyes: "Test3",
+        mood: "Test2",
         shape: "Test4",
-        size: "Test2",
+        size: "Test1",
         type: "Test6",
       },
     };
@@ -46,7 +46,7 @@ describe("monster generator", () => {
       stringified: "Test1 Test2 Test3 Test4",
       properties: {
         color: "Test3",
-        mood: "Test1",
+        eyes: "Test1",
         shape: "Test2",
         type: "Test4",
       },

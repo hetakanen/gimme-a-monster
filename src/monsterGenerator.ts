@@ -17,12 +17,12 @@ export const generate = (options: IOptions) => {
   };
 
   if (complexity === "high") {
-    result.properties.eyes = getRandomValue(eyes);
     result.properties.size = getRandomValue(sizes);
+    result.properties.mood = getRandomValue(mood);
   }
 
   if (complexity === "high" || complexity === "medium") {
-    result.properties.mood = getRandomValue(mood);
+    result.properties.eyes = getRandomValue(eyes);
     result.properties.shape = getRandomValue(shapes);
   }
 
