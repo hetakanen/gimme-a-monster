@@ -1,36 +1,48 @@
-const gulp = require("gulp");
-const browserify = require("browserify");
-const source = require("vinyl-source-stream");
-const tsify = require("tsify");
-const uglify = require("gulp-uglify");
-const sourcemaps = require("gulp-sourcemaps");
-const buffer = require("vinyl-buffer");
+ import browserify from "browserify";
+ import source from "vinyl-source-stream";
+ import tsify from "tsify";
+ import uglify from "gulp-uglify";
+ import sourceMaps from "gulp-sourcemaps";
+ import buffer from "vinyl-buffer";
+ import gulp from 'gulp';
 
-gulp.task("build:src", function () {
+const { task, parallel, series } = gulp;
+const { init, write } = sourceMaps;
+
+gulp.task('build:src', function () {
     return browserify({
-        basedir: ".",
-        debug: true,
-        entries: ["src/index.ts"],
-        cache: {},
-        packageCache: {},
-        standalone: "gimme-a-monster"
+      basedir: ".",
+      debug: true,
+      entries: ["src/index.ts"],
+      cache: {},
+      packageCache: {},
     })
     .plugin(tsify)
     .bundle()
-    .pipe(source("index.js")) // Minify ts files with package name | end 
+    .pipe(source("index.js"))
     .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(init({ loadMaps: true }))
     .pipe(uglify())
-    .pipe(sourcemaps.write("./")) // Uglify | end
-    .pipe(gulp.dest("dist")); // Set destination to dist
+    .pipe(write("./"))
+    .pipe(gulp.dest("dist"));
 });
 
-gulp.task('build:cli', () => {
-    return gulp.src('./src/cli.js')
-        .pipe(uglify())
-        .pipe(gulp.dest('bin'));
+gulp.task('build:cli', function () {
+  return browserify({
+    basedir: ".",
+    debug: true,
+    entries: ["cli.js"],
+    cache: {},
+    packageCache: {},
+  })
+  .bundle()
+  .pipe(source("cli.js"))
+  .pipe(buffer())
+  .pipe(init({ loadMaps: true }))
+  .pipe(uglify())
+  .pipe(write("./"))
+  .pipe(gulp.dest("bin"));
 });
 
-gulp.task('build', gulp.parallel(['build:src', 'build:cli']));
-gulp.task('default', gulp.series('build'));
-
+task('build', parallel(['build:src', 'build:cli']));
+task('default', series('build'));

@@ -3,7 +3,9 @@
 // Example run: node cli.js -cs lower -cpx high
 
 const { program } = require('commander');
-const generateMonster = require('../dist/index.js').default;
+const generateMonster = require('./dist/index.js');
+// import { program } from 'commander';
+// import {generateMonster} from './dist/index.js';
 
 program
   .option(

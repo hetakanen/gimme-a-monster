@@ -1,6 +1,7 @@
 {
   "name": "gimme-a-monster",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "dependencies": {},
   "devDependencies": {
