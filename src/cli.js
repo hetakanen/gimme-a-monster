@@ -3,7 +3,7 @@
 // Example run: node cli.js -cs lower -cpx high
 
 const { program } = require('commander');
-const generateMonster = require('../dist/index.js').default;
+const index = require('../dist/index.js');
 
 program
   .option(
@@ -23,7 +23,7 @@ if (options.casing) console.log(`Option <casing>: ${options.casing}`);
 
 console.log(
   "Result:",
-  generateMonster({
+  index.generateMonster({
     complexity: options.complexity,
     casing: options.casing,
   })
